@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const button = {
+          clicked: false,
+          click: () => {
+            this.clicked = true;
+            if (button.clicked) console.log('The button has been clicked!');
+          },
+        };
+
+        const el = document.querySelector('#test');
+        // Uses the bind function to create a new function bound to the button object
+        el.addEventListener('click', button.click.bind(button));
+
+        const boundFunction = button.click.bind(button);
+        if (boundFunction !== button.click) {
+          console.log('Calling bind creates a completly new function');
+        }
+
+        console.log(boundFunction);
+        console.log(button.click);
+      });
+    </script>
+    <title>click button handler_arrow</title>
+  </head>
+  <body>
+    <!--button element to which we’ll assign an event handler-->
+    <button id="test">Click me!</button>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // A constructor function that creates objects that retain state regarding our button. With it, we’ll track whether the button has been clicked.
+        function Button() {
+          this.clicked = false;
+          // Declares the method that we’ll use as the click handler. Because it’s a method of the object, we use this within the function to get a reference to the object.
+          // click handler로 사용할 method를 선언한다. 왜냐하면 function 안에서 객체에 대한 참조를 얻기 위해 사용할 object의 method이기 때문이다.
+          this.click = function () {
+            this.clicked = true;
+            if (button.clicked) console.log('The button has been clicked!');
+          };
+        }
+
+        // Creates an instance that will track whether the button was clicked
+        const button = new Button();
+        const btn = document.querySelector('#test');
+
+        // Establishes the click handler on the button
+        btn.addEventListener('click', button.click);
+      });
+    </script>
+    <title>click button handler</title>
+  </head>
+  <body>
+    <!--A button element to which we’ll assign an event handler-->
+    <button id="test">Click me!</button>
+  </body>
+</html>

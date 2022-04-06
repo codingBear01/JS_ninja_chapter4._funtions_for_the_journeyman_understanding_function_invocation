@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // The button object is defined as an object literal.
+        const button = {
+          clicked: false,
+          // Our arrow function is a property of an object literal.
+          click: () => {
+            this.clicked = true;
+            // Test whether the button was clicked.
+            if (button.clicked) console.log('The button has been clicked!');
+            // The value of this in our arrow function is the global window object.
+            // clicked is stored on window.
+            if (window.clicked) console.log('clicked is stored in window!');
+          },
+        };
+
+        const el = document.querySelector('#test');
+        el.addEventListener('click', button.click);
+      });
+    </script>
+    <title>click button handler_arrow</title>
+  </head>
+  <body>
+    <!--button element to which we’ll assign an event handler-->
+    <button id="test">Click me!</button>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // A constructor function that creates objects that retain state regarding our button. With it, we’ll track whether the button has been clicked.
+        function Button() {
+          this.clicked = false;
+          // Declares the arrow function that we’ll use as the click handler. Because it’s a method of the object, we use this within the function to get a reference to the object.
+          this.click = () => {
+            this.clicked = true;
+            // Within the method, we test that the button state has been correctly changed after a click.
+            if (button.clicked) console.log('The button has been clicked!');
+            console.log(button.clicked);
+          };
+        }
+
+        const button = new Button();
+        const btn = document.querySelector('#test');
+
+        btn.addEventListener('click', button.click);
+      });
+    </script>
+    <title>click button handler_arrow</title>
+  </head>
+  <body>
+    <!--button element to which we’ll assign an event handler-->
+    <button id="test">Click me!</button>
+  </body>
+</html>
